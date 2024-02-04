@@ -85,7 +85,27 @@ unique_genres = set(', '.join(genres_list) for genres_list in genres_lists)
 
 num_unique_genres = len(unique_genres)
 #%% QUESTION 12
+# Option 1
 corr_matrix = df.corr()
+#%%
+# Option 2
+import numpy as np
+import pandas as pd
+from ydata_profiling import ProfileReport
+
+df = pd.read_csv("movie_dataset.csv")
+
+# Rename columns by replacing spaces with underscores
+df.columns = df.columns.str.replace(' ', '_')
+
+# Fill nan cells with a 0
+df.fillna(0, inplace=True)
+
+profile = ProfileReport(df, title="Pandas Profiling Report")
+
+profile
+
+
 
 
 
